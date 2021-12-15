@@ -1,0 +1,13 @@
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\bin\Debug\netcoreapp3.1\Day05_01.exe
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\bin\Debug\netcoreapp3.1\Day05_01.deps.json
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\bin\Debug\netcoreapp3.1\Day05_01.runtimeconfig.json
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\bin\Debug\netcoreapp3.1\Day05_01.runtimeconfig.dev.json
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\bin\Debug\netcoreapp3.1\Day05_01.dll
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\bin\Debug\netcoreapp3.1\Day05_01.pdb
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\obj\Debug\netcoreapp3.1\Day05_01.csprojAssemblyReference.cache
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\obj\Debug\netcoreapp3.1\Day05_01.AssemblyInfoInputs.cache
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\obj\Debug\netcoreapp3.1\Day05_01.AssemblyInfo.cs
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\obj\Debug\netcoreapp3.1\Day05_01.csproj.CoreCompileInputs.cache
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\obj\Debug\netcoreapp3.1\Day05_01.dll
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\obj\Debug\netcoreapp3.1\Day05_01.pdb
+C:\Users\Hami\source\repos\httpsadventofcode-2021\Day01\Day05_01\obj\Debug\netcoreapp3.1\Day05_01.genruntimeconfig.cache
