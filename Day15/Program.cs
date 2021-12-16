@@ -9,6 +9,7 @@ namespace Day15
         public int x;
         public int y;
         public int price;
+        public int innerPrice;
 
         public override string ToString()
         {
@@ -62,6 +63,7 @@ namespace Day15
             this.x = _x;
             this.y = _y;
             this.price = int.MaxValue;
+            this.innerPrice = int.MaxValue;
         }
     }
     class Program
@@ -120,27 +122,63 @@ namespace Day15
             inCloud[0, 0] = true;
 
             PointPrice pp;
+            //int iter = 0;
+            //int[,] memoIter = new int[lenY , lenX];
             while (!inCloud[lenY - 1, lenX - 1])
             {
                 pp = pracBody.Min;
                 inCloud[pp.y, pp.x] = true;
-                searchFromWithPrice(pp.x, pp.y, pp.price);
+                //memoIter[pp.y, pp.x] = iter;
+                searchFromWithPrice(pp.x, pp.y, pp.innerPrice);
                 pracBody.Remove(pp);
+                //iter++;
             }
+
+           
             stopwatch.Stop();
-            Console.WriteLine("Price = {0}", pointerToSS[lenY - 1, lenX - 1].price);
+            int counter = 0;
+            for (i = 0; i < lenY; i++)
+            {
+                for (j = 0; j < lenX; j++)
+                {
+                    if (inCloud[j, i])
+                        counter++;
+
+                }
+            }
+            /*
+            for (i = 0; i < lenY; i++)
+            {
+                for (j = 0; j < lenX; j++)
+                {
+                    if (memoIter[i, j] < 10)
+                        Console.Write(" ");
+                    if (memoIter[i, j] < 100)
+                        Console.Write(" ");
+                    if (memoIter[i, j] < 1000)
+                        Console.Write(" ");
+                    Console.Write(memoIter[i,j]+" ");
+                }
+                Console.WriteLine("");
+            }
+            Console.WriteLine("");
+            Console.WriteLine("");*/
+            Console.WriteLine("Price = {0}", pointerToSS[lenY - 1, lenX - 1].innerPrice);
+            Console.WriteLine("LenX = {0}, LenX = {1}, counter = {2}", lenX,lenY,counter);
             Console.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("");
+            
         }
 
-        private static void searchFromWithPrice(int x, int y, int price)
+        private static void searchFromWithPrice(int x, int y, int innerPrice)
         {
-            zpracujPozici(x - 1, y, price);
-            zpracujPozici(x + 1, y, price);
-            zpracujPozici(x, y - 1, price);
-            zpracujPozici(x, y + 1, price);
+            zpracujPozici(x - 1, y, innerPrice);
+            zpracujPozici(x + 1, y, innerPrice);
+            zpracujPozici(x, y - 1, innerPrice);
+            zpracujPozici(x, y + 1, innerPrice);
         }
 
-        private static void zpracujPozici(int x, int y, int price)
+        private static void zpracujPozici(int x, int y, int innerPrice)
         {
             if (x < 0 || x >= lenX || y < 0 || y >= lenY)
                 return;
@@ -148,11 +186,11 @@ namespace Day15
                 return;
 
             PointPrice pp = pointerToSS[y, x];
-            if (pp.price > price + memo[y, x])
-            {
+            if (pp.innerPrice > innerPrice + memo[y, x]) { 
                 //if (pracBody.Contains(pp))                    
                 pracBody.Remove(pp);
-                pp.price = price + memo[y, x];
+                pp.innerPrice = innerPrice + memo[y, x];
+                pp.price = pp.innerPrice + 1*(lenX - 1 - x) + 1*(lenY - 1 - y);
                 pracBody.Add(pp);
             }
         }
