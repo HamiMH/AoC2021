@@ -21,8 +21,8 @@ namespace Day16
         static void Main(string[] args)
         {
             Stopwatch stopwatch = new Stopwatch();
-
             stopwatch.Start();
+
             string line;
             /*line = "D2FE28";
             line = "38006F45291200";
@@ -43,10 +43,10 @@ namespace Day16
             //processInput();
             //Console.WriteLine(binInput);
             long result2 = processInput();
-
-            Console.WriteLine("result01 = {0}, result02 = {1}, len = {2}", result, result2, binLen);
             stopwatch.Stop();
-            Console.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("result01 = {0}, result02 = {1}, len = {2}", result, result2, binLen);
+
+                       Console.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
         }
 
         private static long processInput()

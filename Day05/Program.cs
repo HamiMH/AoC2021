@@ -417,7 +417,7 @@ namespace Day05_01
                 prioFronta.Add(pf2);
             }
 
-
+       
 
             PolozkaFronty pf;
             /* foreach (PolozkaFronty ppf in prioFronta)
