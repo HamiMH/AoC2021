@@ -13,6 +13,11 @@ namespace Day20
         {
             return "(" + x + "," + y + ")";
         }
+
+        public override int GetHashCode()
+        {
+            return 128*y+x; // Or something like that
+        }
         public int CompareTo(Point p1)
         {
 
@@ -47,10 +52,12 @@ namespace Day20
     }
     class Program
     {
-        static SortedSet<Point> ssp1;
-        static SortedSet<Point> ssp2;
-        static SortedSet<Point> calcul;
+        static HashSet<Point> sspL1;
+        static HashSet<Point> sspL2;
+        static HashSet<Point> sspB1;
+        static HashSet<Point> sspB2;
         static string pravidla = "";
+        static int iter = 0;
         static void Main(string[] args)
         {
             List<string> inputCol = new List<string>();
@@ -67,81 +74,72 @@ namespace Day20
                     break;
                 inputCol.Add(lineIn1);
             }
+            System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+            stopwatch.Start();
 
             int i, j, inputLenY, inputLenX,x,y;
 
             inputLenY = inputCol.Count;
             inputLenX = inputCol[0].Length;
-            ssp1 = new SortedSet<Point>();
+            sspL1 = new HashSet<Point>();
+            sspB1 = new HashSet<Point>();
             for (i = 0; i < inputLenY; i++)
             {
                 lineIn1 = inputCol[i];
                 for (j = 0; j < inputLenX; j++)
+                {
                     if (lineIn1[j] == '#')
-                        ssp1.Add(new Point(j, i));
-            }
-
-           // Console.WriteLine("count = {0}, prlen = {1}", ssp1.Count, pravidla.Length);
-            for (int iter = 0; iter < 2; iter++)
-           {
-
-                ssp2 = new SortedSet<Point>();
-                calcul = new SortedSet<Point>();
-                foreach (Point pt in ssp1)
-                {
-                    x = pt.x;
-                    y = pt.y;
-                    for (i = y - 1; i <= y + 1; i++)
-                        for (j = x - 1; j <= x + 1; j++)
-                        {
-                            zpracuj(j, i);
-                        }
-                }
-            ssp1 = ssp2;
-            }
-
-            for (i = -5; i < inputLenY+5; i++)
-            {
-                for (j = -5; j < inputLenX + 5; j++)
-                {
-                    if(ssp2.Contains(new Point(j, i)))
-                    {
-                        Console.Write("#");
-                    }
+                        sspL1.Add(new Point(j, i));
                     else
-                    {
-                        Console.Write(".");
-                    }
-                   
+                        sspB1.Add(new Point(j, i));
                 }
-                Console.WriteLine("");
+                   
             }
-            
 
-            Console.WriteLine("count = {0}, prlen = {1}",ssp2.Count,pravidla.Length);
+            // Console.WriteLine("count = {0}, prlen = {1}", ssp1.Count, pravidla.Length);
+            for (iter = 0; iter < 50; iter++)
+            {
+                sspL2 = new HashSet<Point>();
+                sspB2 = new HashSet<Point>();
+
+                for (i = -1 - iter; i <= inputLenY + iter; i++)
+                    for (j = -1 - iter; j <= inputLenX + iter; j++)
+                        zpracuj(j, i);
+                sspL1 = sspL2;
+                sspB1 = sspB2;
+            }
+
+            stopwatch.Stop();
+            Console.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("count = {0}, prlen = {1}",sspL2.Count,pravidla.Length);
         }
 
         private static void zpracuj(int x, int y)
         {
             Point pt = new Point(x, y);
-           /* if (calcul.Contains(pt))
-                return;*/
             int i, j;
             int result = 0;
             for (i = y - 1; i <= y + 1; i++)
                 for (j = x - 1; j <= x + 1; j++)
                 {
                     result <<= 1;
-                    if (ssp1.Contains(new Point(j, i)))
+                    if (sspL1.Contains(new Point(j, i)))
                     {
                         result |= 1;
+                    }
+                    else if (sspB1.Contains(new Point(j, i)))
+                    {
+                    }
+                    else
+                    {
+                       result |= (iter & 1);
                     }
                 }
 
             if (pravidla[result] == '#')
-                ssp2.Add(pt);
-
-            calcul.Add(pt);
+                sspL2.Add(pt);
+            else                                              
+                sspB2.Add(pt);
 
         }
     }
