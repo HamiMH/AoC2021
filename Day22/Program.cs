@@ -12,18 +12,31 @@ namespace Day22
         public long yMax;
         public long zMin;
         public long zMax;
-
+        static long minlong(long a, long b)
+        {
+            if (a < b)
+                return a;
+            else
+                return b;
+        }
+        static long maxlong(long a, long b)
+        {
+            if (a > b)
+                return a;
+            else
+                return b;
+        }
         public static Cube intersection(Cube master, Cube slave)
         {
             if (master.xMax < slave.xMin || slave.xMax < master.xMin || master.yMax < slave.yMin || slave.yMax < master.yMin || master.zMax < slave.zMin || slave.zMax < master.zMin)
                 return null;
             Cube cube = new Cube();
-            cube.xMin = Program.maxlong(master.xMin, slave.xMin);
-            cube.xMax = Program.minlong(master.xMax, slave.xMax);
-            cube.yMin = Program.maxlong(master.yMin, slave.yMin);
-            cube.yMax = Program.minlong(master.yMax, slave.yMax);
-            cube.zMin = Program.maxlong(master.zMin, slave.zMin);
-            cube.zMax = Program.minlong(master.zMax, slave.zMax);
+            cube.xMin = maxlong(master.xMin, slave.xMin);
+            cube.xMax = minlong(master.xMax, slave.xMax);
+            cube.yMin = maxlong(master.yMin, slave.yMin);
+            cube.yMax = minlong(master.yMax, slave.yMax);
+            cube.zMin = maxlong(master.zMin, slave.zMin);
+            cube.zMax = minlong(master.zMax, slave.zMax);
 
             return cube;
         }
@@ -100,20 +113,7 @@ namespace Day22
 
     class Program
     {
-        public static long minlong(long a, long b)
-        {
-            if (a < b)
-                return a;
-            else
-                return b;
-        }
-        public static long maxlong(long a, long b)
-        {
-            if (a > b)
-                return a;
-            else
-                return b;
-        }
+       
         static void Main(string[] args)
         {
 
@@ -135,7 +135,6 @@ namespace Day22
             Cube mainCube = new Cube(lowBOund, maxBound, lowBOund, maxBound, lowBOund, maxBound);
             RealCube realcube = new RealCube(mainCube);
             string operation;
-            string prac;
             long xmin, xmax, ymin, ymax, zmin, zmax;
             string[] strArr;
             string[] strArr1;
