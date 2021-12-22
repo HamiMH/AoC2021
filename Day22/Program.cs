@@ -27,7 +27,6 @@ namespace Day22
 
             return cube;
         }
-
         public long Volume()
         {
             return (1 + this.xMax - this.xMin) * (1 + this.yMax - this.yMin) * (1 + this.zMax - this.zMin);
@@ -43,8 +42,6 @@ namespace Day22
             zMax = _zMax;
         }
         public Cube() { }
-
-
     }
     public class RealCube
     {
@@ -61,14 +58,6 @@ namespace Day22
 
             return realVolume;
         }
-        public long MaxVolume()
-        {
-            long realVolume = master.Volume();
-
-            return realVolume;
-        }
-
-
         public void on(Cube cubeIn)
         {
             foreach(RealCube rlc in slaves)
@@ -189,7 +178,7 @@ namespace Day22
             }
             stopwatch.Stop();
             Console.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
-            Console.WriteLine("Vol = {0}", realcube.MaxVolume()-realcube.Volume());
+            Console.WriteLine("Vol = {0}", realcube.master.Volume()-realcube.Volume());
 
         }
     }
