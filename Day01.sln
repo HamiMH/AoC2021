@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30804.86
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day01", "Day01\Day01.csproj", "{0AE9A419-473F-4C37-A47F-B6C6E0351E05}"
 EndProject
@@ -41,9 +41,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day20", "Day20\Day20.csproj
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day21", "Day21\Day21.csproj", "{06534821-DEF8-40A5-8826-1DC87E4FE1C4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day21_1", "Day21_1\Day21_1.csproj", "{25732882-A0E4-40AD-A312-5F0DAE683AAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day21_1", "Day21_1\Day21_1.csproj", "{25732882-A0E4-40AD-A312-5F0DAE683AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day22", "Day22\Day22.csproj", "{013A138C-7546-43CC-9043-9F9D011B6C9E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Day22", "Day22\Day22.csproj", "{013A138C-7546-43CC-9043-9F9D011B6C9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Day23", "Day23\Day23.csproj", "{9AB3515D-6BFB-4190-A866-BF6FCA2575F5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -135,6 +137,10 @@ Global
 		{013A138C-7546-43CC-9043-9F9D011B6C9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{013A138C-7546-43CC-9043-9F9D011B6C9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{013A138C-7546-43CC-9043-9F9D011B6C9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AB3515D-6BFB-4190-A866-BF6FCA2575F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB3515D-6BFB-4190-A866-BF6FCA2575F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB3515D-6BFB-4190-A866-BF6FCA2575F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB3515D-6BFB-4190-A866-BF6FCA2575F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

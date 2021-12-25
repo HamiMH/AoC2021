@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "Vcfuqhw8lUsXMVEfA0IBoppg2vnB5m9cvlE8scq3UcOCpKisWwr37z4a1ULVDHWDPTj7wKAOXR89pEbvoSQ0AQ==",
+  "dgSpecHash": "5LzdvzOu8tMX+VMU6ARJcZagq560Ip68Fher9Ud6kRSGJ1kemZhYAakmS7y8qbYpJDDc356CKeI8uv00LZyJrg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\AoC2021\\Day01\\Day01.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\Day01\\Day01.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hami\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.22\\microsoft.netcore.app.host.win-x64.3.1.22.nupkg.sha512",
+    "C:\\Users\\Hami\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\Hami\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\Hami\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512"
+  ],
   "logs": []
 }
