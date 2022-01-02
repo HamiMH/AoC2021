@@ -27,7 +27,7 @@ namespace Day19
             => new  Point(p1.x + p2.x, p1.y + p2.y, p1.z + p2.z);
 
         public static Point operator -(Point p1, Point p2)
-            => p1 + (-p2);
+            => new Point(p1.x - p2.x, p1.y - p2.y, p1.z - p2.z);
 
         public override string ToString()
         {
@@ -46,11 +46,7 @@ namespace Day19
         {
             return abs(this.x) + abs(this.y) + abs(this.z);
         }
-
-        public override int GetHashCode()
-        {
-            return 128*128*z + 128 * y + x; // Or something like that
-        }
+       
         public int CompareTo(Point p1)
         {
 
@@ -188,7 +184,7 @@ namespace Day19
         }
 
 
-        static List<List<List<Point>>> allBeaconsAndRot = new List<List<List<Point>>>();
+        static List<List<SortedSet<Point>>> allBeaconsAndRot = new List<List<SortedSet<Point>>>();
         static List<Point> localShift = new List<Point>();
         static List<int> rightRotation = new List<int>();
         static List<bool> completedSearch = new List<bool>();
@@ -210,22 +206,26 @@ namespace Day19
                     break;
                 inputCol.Add(lineIn1);
             }
+
+            System.Diagnostics.Stopwatch stopwatch = new System.Diagnostics.Stopwatch();
+            stopwatch.Start();
+
             initRoMatrix();
 
-            List<List<Point>> thisBeaconAllRot = new List<List<Point>>();
-            List<Point> thisBeaconOneRot = new List<Point>();
+            List<SortedSet<Point>> thisBeaconAllRot = new List<SortedSet<Point>>();
+            SortedSet<Point> thisBeaconOneRot = new SortedSet<Point>();
             foreach (string str in inputCol)
             {
                 if (!str.Contains(","))
                 {
-                    allBeaconsAndRot.Add(new List<List<Point>>());
+                    allBeaconsAndRot.Add(new List<SortedSet<Point>>());
                     localShift.Add(new Point(0, 0, 0));
                     rightRotation.Add(-1);
                     completedSearch.Add(false);
                     thisBeaconAllRot = allBeaconsAndRot[allBeaconsAndRot.Count - 1];
 
                     for(i=0;i<numOfRot;i++)
-                        thisBeaconAllRot.Add(new List<Point>());
+                        thisBeaconAllRot.Add(new SortedSet<Point>());
                     
                     thisBeaconOneRot = thisBeaconAllRot[0];
                 }
@@ -236,15 +236,24 @@ namespace Day19
                 }
             }
             numOfScan = allBeaconsAndRot.Count;
+          
+
             generateAllRotations();
             rightRotation[0] = 0;
             foreach(Point pt in allBeaconsAndRot[0][0])
                 foundBeacon.Add(pt);
 
+            stopwatch.Stop();
+            Console.WriteLine("Preprocess: Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+            stopwatch.Reset();
+            stopwatch.Start();
+
             processInput();
 
             int farestScan=findFarestScan();
-
+            stopwatch.Stop();
+            Console.WriteLine("Elapsed Time is {0} ms", stopwatch.ElapsedMilliseconds);
+            Console.WriteLine("Elapsed Time is {0} s", stopwatch.ElapsedMilliseconds/1000);
             Console.WriteLine("numb of beacon = {0}, farest scan = {1}", foundBeacon.Count, farestScan);
         }
 
@@ -305,27 +314,47 @@ namespace Day19
         private static bool pairScannersAndRot(int scanFrom, int scanTo, int indOfRot)
         {
             int numOfEql;
-            foreach (Point ptFrom in allBeaconsAndRot[scanFrom][rightRotation[scanFrom]])
-                foreach (Point ptTo in allBeaconsAndRot[scanTo][indOfRot])
+            SortedSet<Point> ssFrom = allBeaconsAndRot[scanFrom][rightRotation[scanFrom]];
+            SortedSet<Point> ssTo = allBeaconsAndRot[scanTo][indOfRot];
+            int remainingssFrom = ssFrom.Count;
+            int remainingssTo;
+            int ssToCount = ssTo.Count;
+            foreach (Point ptFrom in ssFrom) {
+                if (remainingssFrom < 12)//perform. optim.
+                    break;
+                remainingssFrom--;
+                foreach (Point ptTo in ssTo)
                 {
                     Point shift = ptTo - ptFrom;
                     numOfEql = 0;
-                    foreach (Point ptFromInner in allBeaconsAndRot[scanFrom][rightRotation[scanFrom]])
-                        foreach (Point ptToInner in allBeaconsAndRot[scanTo][indOfRot])
-                        {
-                            if (ptFromInner.Equals(ptToInner - shift))
-                                numOfEql++;
-                        }
+                    /* foreach (Point ptFromInner in allBeaconsAndRot[scanFrom][rightRotation[scanFrom]])
+                         foreach (Point ptToInner in allBeaconsAndRot[scanTo][indOfRot])
+                         {
+                             if (ptFromInner.Equals(ptToInner - shift))
+                                 numOfEql++;
+                         }*/
+                    remainingssTo = ssToCount;
+                    foreach (Point ptToInner in ssTo)
+                    {
+                        if (remainingssTo < 12- numOfEql) //perform. optim.
+                            break;
+                        remainingssTo--;
+                        if (ssFrom.Contains(ptToInner - shift))
+                            numOfEql++;
+                    }
+                        
+
                     if (numOfEql >= 12)
                     {
                         rightRotation[scanTo] = indOfRot;
                         localShift[scanTo] = localShift[scanFrom] - shift;
-                        foreach (Point ptToInner2 in allBeaconsAndRot[scanTo][indOfRot])
+                        foreach (Point ptToInner2 in ssTo)
                             foundBeacon.Add(ptToInner2 + localShift[scanTo]);
                         //upravit shift dle původního
                         return true;
                     }
                 }
+        }
             return false;
         }
 
@@ -340,7 +369,7 @@ namespace Day19
         private static void generateAllRotations()
         {
             int i;
-            foreach(List<List<Point>> oneScanner in allBeaconsAndRot)
+            foreach(List<SortedSet<Point>> oneScanner in allBeaconsAndRot)
             {
                 foreach(Point beacon in oneScanner[0])
                 {
