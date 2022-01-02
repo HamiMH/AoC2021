@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\Day06\\Day06.csproj": {}
+    "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\AoC2021\\Day06\\Day06.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\Day06\\Day06.csproj": {
+    "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\AoC2021\\Day06\\Day06.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\Day06\\Day06.csproj",
+        "projectUniqueName": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\AoC2021\\Day06\\Day06.csproj",
         "projectName": "Day06",
-        "projectPath": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\Day06\\Day06.csproj",
+        "projectPath": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\AoC2021\\Day06\\Day06.csproj",
         "packagesPath": "C:\\Users\\Hami\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\Day06\\obj\\",
+        "outputPath": "C:\\Users\\Hami\\Documents\\GitHub\\AoC2021\\AoC2021\\Day06\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\Hami\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -53,30 +49,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "downloadDependencies": [
-            {
-              "name": "Microsoft.AspNetCore.App.Ref",
-              "version": "[3.1.10, 3.1.10]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Host.win-x64",
-              "version": "[3.1.22, 3.1.22]"
-            },
-            {
-              "name": "Microsoft.NETCore.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            },
-            {
-              "name": "Microsoft.WindowsDesktop.App.Ref",
-              "version": "[3.1.0, 3.1.0]"
-            }
-          ],
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }
